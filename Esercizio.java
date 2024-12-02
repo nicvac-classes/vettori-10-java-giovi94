@@ -1,26 +1,34 @@
-//LEGGERE LE ISTRUZIONI NEL FILE README.md
-
-//Import di Classi Java necessarie al funzionamento del programma
 import java.util.Scanner;
-
-// Classe principale, con metodo main
-class Esercizio {
-    // Il programma parte con una chiamata a main().
-    public static void main(String args[])
-    {
-        //Variabili del programma
-        String nome;
-
-        //Creo l'oggetto in per l'input da tastiera
-        Scanner in = new Scanner( System.in );
-
-        //Leggo l'input da tastiera
-        System.out.print("Inserisci il tuo nome: ");
-        nome = in.nextLine();
-
-        //Output del nome acquisito da tastiera
-        System.out.println("Ciao "+nome+"!");
+public class EsameStudenti {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Inserisci il numero di studenti: ");
+        int n = scanner.nextInt();
+        String[] nomi = new String[n];
+        int[] votazioni = new int[n];
+        int[] crediti = new int[n];
+        for (int i = 0; i < n; i++) {
+            System.out.println("Studente " + (i + 1));
+            scanner.nextLine();
+            System.out.print("Inserisci il nome dello studente: ");
+            nomi[i] = scanner.nextLine();
+            System.out.print("Inserisci la votazione dello studente: ");
+            votazioni[i] = scanner.nextInt();
+            System.out.print("Inserisci i crediti formativi dello studente: ");
+            crediti[i] = scanner.nextInt();
+        }
+        int sommaVotazioni = 0;
+        for (int i = 0; i < n; i++) {
+            sommaVotazioni += votazioni[i];
+        }
+        double media = (double) sommaVotazioni / n;
+        System.out.println("La media delle votazioni è: " + media);
+        System.out.println("\nStudenti con votazione superiore alla media e crediti >= 6:");
+        for (int i = 0; i < n; i++) {
+            if (votazioni[i] > media && crediti[i] >= 6) {
+                System.out.println(nomi[i]);
+            }
+        }
+        scanner.close();
     }
 }
-
-//LEGGERE LE ISTRUZIONI NEL FILE README.md
